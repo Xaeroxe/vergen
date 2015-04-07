@@ -1,5 +1,5 @@
 # vergen
-Includes 3 functions for use in version strings in ```lib.rs/main.rs``` at compile time via a custom cargo build script.
+Includes 5 functions for use in version strings in ```lib.rs/main.rs``` at compile time via a custom cargo build script.
 
 Note:  This currently only works for projects using git building on Linux or msys2.  I haven't tested on Mac OS/X, but it will work if the date command exists.  I plan to expand the functionality to additional platforms eventually.
 
@@ -8,8 +8,16 @@ pub fn now() -> &'static str {
    // Output of 'date --rc-3339=ns'
 }
 
+pub fn short_now() -> &'static str {
+   // Output of 'date --rc-3339=date'
+}
+
 pub fn sha() -> &'static str {
    // Output of 'git rev-parse HEAD'
+}
+
+pub fn short_sha() -> &'static str {
+   // Output of 'git rev-parse --short HEAD'
 }
 
 pub fn semver() -> &'static str {
@@ -20,7 +28,7 @@ pub fn semver() -> &'static str {
 ```
 
 ## Status
-[![Build Status](https://travis-ci.org/rustyhorde/vergen.svg?branch=master)](https://travis-ci.org/rustyhorde/vergen)
+[![Build Status](https://travis-ci.org/rustyhorde/vergen.svg?branch=0.0.7)](https://travis-ci.org/rustyhorde/vergen)
 
 ## Basic Usage
 #### Cargo.toml
